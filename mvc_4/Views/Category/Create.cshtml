@@ -1,0 +1,50 @@
+﻿@model mvc_4.Models.Catalog
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<head>
+    <style>
+        .btn-info:hover,
+        .btn-info:focus
+        {
+            border-color:none;
+        }
+        .btn-info{
+            border-color:none;
+            border:none;
+        }
+    </style>
+</head>
+<h1 style="padding-left:20px; padding-top:20px; color: #d9b5a0; ">Create</h1>
+<div class="container" >
+      <div class="row"  style="border: 1px solid #d9b5a0; border-radius: 8px; ">
+        <div class="col-12 py-5 ">
+<h4 style="color:#d9b5a0;">Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="cat_name" class="control-label"></label>
+                <input asp-for="cat_name" class="form-control" />
+                <span asp-validation-for="cat_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cat_desc" class="control-label"></label>
+                <input asp-for="cat_desc" class="form-control" />
+                <span asp-validation-for="cat_desc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"style="background-color:#d9b5a0;" />
+            </div>
+        </form>
+    </div>
+</div>
+</div></div></div>
+<div>
+    <a asp-action="Index" style="color:#d9b5a0;">Back to List</a>
+</div>
+

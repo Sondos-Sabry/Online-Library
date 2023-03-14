@@ -1,0 +1,179 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+      <meta name="viewport" content="width=device-width" />
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+      <link rel="icon" href="~/img/_DSC0713.JPG">
+         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+         <link rel="stylesheet" href="css/bootstrap.min.css">
+         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+         <link rel="stylesheet" href="~/mvc_4.styles.css" asp-append-version="true" />
+      <title>_Layout2</title>
+      <style>
+          * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Raleway", sans-serif !important; */
+  /* check scroll X  */
+  /* border: 2px solid red; */
+}
+body {
+  color: #333;
+      background-color:#f1d7c6;
+}
+.navbar {
+  /* background-color: #d49f89; */
+  background-color: #fff;
+  /* height: 10vh; */
+  /* max-height: 80px; */
+}
+.navbar img {
+  clip-path: circle(38%);
+  width: 110px;
+  background-color: #a2614c;
+}
+.navbar .nav-link {
+  color: #d49f89;
+}
+.navbar-expand-lg .navbar-collapse .nav-link:active,
+.navbar-expand-lg .navbar-collapse .nav-link:hover,
+.navbar-expand-lg .navbar-collapse .nav-link:focus {
+  color: #d9b5a0;
+}
+.navbar-toggler-icon{
+    width: 50px;
+    background-image: url(/img/menu-icon.png);
+    background-repeat:no-repeat;
+    background-color: transparent;
+} 
+.collapse li a {
+  font-family: "Prata";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+}
+footer i {
+  font-size: 40px;
+  color: #333;
+  display: flex;
+  padding-top: 43px;
+  padding-bottom: 37px;
+  justify-content: center;
+}
+footer a {
+  text-decoration: none;
+}
+
+      </style>
+</head>
+
+<body>
+
+@*navbar*@
+
+        <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #f1d7c6;">
+        <div class="container">
+          <div class="logo-container">
+          <img src="~/img/screen-shot-2016-07-03-at-14.29.57-.jpg" width="220px" alt="">
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span> 
+            <!-- <img src="./img/menu-icon.png" alt=""> -->
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                    <li class="nav-item active">
+                                           <a class="nav-link p-2 p-lg-3"   asp-area="" asp-controller="" asp-action="">Home </a>
+                                        </li>
+                            @{
+                                if (Context.Session.GetInt32("userid") == null)
+                                { 
+                                    
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3"  asp-area="" asp-controller="user" asp-action="register">Register</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3"  asp-area="" asp-controller="user" asp-action="login">Login</a>
+                                                                            </li>
+                                }
+                                else
+                                {
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3"  asp-area="" asp-controller="user" asp-action="profile">Profile</a>
+                                                                            </li>
+                                                                             <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3"  asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3"  asp-area="" asp-controller="book" asp-action="addbook">Add Book</a>
+                                                                            </li>
+                                                                              <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3" asp-area="" asp-controller="book" asp-action="display">My Book</a>
+                                                                            </li>
+
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link p-2 p-lg-3"  asp-area="" asp-controller="user" asp-action="logout">Logout</a>
+                                                                            </li>
+
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+ @*body*@
+
+        <div style="min-height:600px;  background-color: #fff;">
+      
+            @RenderBody()
+      
+        </div>
+
+ @*footer*@
+ 
+         <div style="background-color: #f1d7c6; width:100%;">
+        <div class="container ">
+
+          <footer class="text-center text-lg-start" style="background-color:#f1d7c6;">
+            <div class="container d-flex justify-content-center ">
+              <a class="mx-2 mx-lg-3" href="https://www.facebook.com/sonds.hammad"> <i class="bi bi-facebook"></i></a>
+              <a class="mx-2 mx-lg-3" href="https://github.com/Sondos-Sabry"> <i class="bi bi-github"></i></a>
+              <a class="mx-2 mx-lg-3" href="www.linkedin.com/in/sondos-hammad-59429721a"><i class="bi bi-linkedin"></i></a>
+              <a class="mx-2 mx-lg-3" href="#"> <i class="bi bi-whatsapp"></i></a>
+            </div>
+
+            <!-- Copyright -->
+
+            <div class="text-center text-white " style="padding-top: 40px; border-top: 1px solid #333; ">
+              <p style="color: #333; margin: 0px;"> © 2022 Copyright: SondosHammad</p>
+            </div>
+            <!-- Copyright -->
+          </footer>
+
+        </div>
+
+      </div>
+
+           <script src="~/lib/jquery/dist/jquery.min.js"></script>
+           <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+           <script src="~/js/site.js" asp-append-version="true"></script>
+          
+           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"> </script>
+           @RenderSection("footer",false)
+</body>
+</html>

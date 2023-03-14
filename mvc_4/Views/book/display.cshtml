@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<h1 style="padding-left:20px; padding-top:20px; color: #d9b5a0; ">My Books..</h1>
+ <div class="container" >
+      <div class="row"  style="border: 1px solid #d9b5a0; border-radius: 8px; padding-right:150px ">
+        <div class="col-12  ">
+@foreach (book b2 in Model)
+{
+    <h1 class="text-center">@b2.title</h1>
+    <div class="row col-12">
+        <div style=" font-style: normal; font-weight: 300; font-family: Prata;  font-size: 20px; color: #555;" class="col-8 col-md-10  ">@b2.bref</div>
+        <div class="col-4 col-md-2 "><img src="@b2.photo" style="width:200px; height:200px;" /></div>
+    </div>
+    <div class="row">
+        <div class="col-4 col-md-2">Category : @b2.cat.cat_name</div>
+        <div class="col-4 col-md-2" >Date : @b2.date </div>
+        <div class="col-4 col-md-2"><a asp-action="readmore" asp-route-id="@b2.id" style="color:#d9b5a0;text-decoration:none"> Read more..   </a> </div>
+    </div>
+ <hr class="text-center" width="50%" />
+}
+</div></div></div>

@@ -1,0 +1,54 @@
+﻿@model book
+@{
+  
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+         <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<h1 style="padding-left:20px; padding-top:20px; color: #d9b5a0; ">Add New Book...</h1>
+ <div class="container" >
+      <div class="row"  style="border: 1px solid #d9b5a0; border-radius: 8px; ">
+        <div class="col-12  col-lg-12">
+<form method="post" enctype="multipart/form-data" style="padding: 25px; padding-bottom: 10px;  margin-right: 0px;">
+       <div class="form-group">
+            <label asp-for=title >Title</label>
+            <input  class="form-control" asp-for=title >
+            <span asp-validation-for="title" class="text-danger"></span>
+       </div>
+
+       <div class="form-group">
+            <label asp-for=bref >Bref</label>
+            <textarea  class="form-control" asp-for=bref ></textarea>
+            <span asp-validation-for="bref" class="text-danger"></span>
+       </div>
+
+        <div class="form-group">
+            <label asp-for=desc >Descraption</label>
+            <textarea  class="form-control" asp-for=desc ></textarea>
+            <span asp-validation-for="desc " class="text-danger"></span>
+       </div>
+
+       <div class="form-group">
+            <label asp-for=photo >Book</label>
+            <input type="file" name="img" class="form-control" asp-for=photo /> 
+       </div>
+
+        <div class="form-group">
+            <label asp-for=cat_id >Category</label>
+            <select class="form-control" asp-for=cat_id asp-items=@ViewBag.cat></select>
+            <span asp-validation-for="cat_id" class="text-danger"></span>
+       </div>
+       <br />
+       <input type="submit" value="Add" class="btn btn-info" style="background-color:#d9b5a0;"/>
+        
+</form>
+
+</div>
+</div>
+</div>
+
